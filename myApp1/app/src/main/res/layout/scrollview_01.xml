@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--
+    java 같은 경우 문법 오류를 잘 잡아준다.
+    xml 언어의 특징은 문법 체크에 있어서 느슨하다.
+-->
+
+
+<!--    스크롤 뷰 사용할 때 주의점
+        : 스크롤 뷰는 오직 하나의 자식 뷰를 가질 수 있다.
+        : 스크롤뷰를 쓸 때는 무조건 fillViewport 속성 true  사용하기
+        초기 만든 버전이 오류가 나서 뒤에 오류를 수정한 것으로 항상 사용해야함.
+        잘못 만들어진 부분을 해결하는 속성이다.
+        -->
+    <ScrollView
+        android:scrollbars="none"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:background="@color/purple_200"
+                android:layout_width="300dp"
+                android:layout_height="300dp"/>
+
+            <TextView
+                android:background="@color/teal_700"
+                android:layout_width="200dp"
+                android:layout_height="300dp"/>
+
+            <TextView
+                android:background="#4CAF50"
+                android:layout_width="100dp"
+                android:layout_height="300dp"/>
+
+            <TextView
+                android:background="#8BC34A"
+                android:layout_width="100dp"
+                android:layout_height="300dp"/>
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+
+리니어 레이아웃 : 부모가 될 수 있는 뷰 컴포넌트이다. - 자식도 될 수 있음.
+
+배치 관리자
+자식 뷰들의 배치 방향을 정하는 역할을 한다.
+
+orientation - vertical 수직
+            - horizontal 수평
+
+res - layout - xml - layout

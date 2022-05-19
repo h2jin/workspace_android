@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--   frameLayout도 자식 뷰 컴포넌트를 가질 수 있다. -->
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:background="@color/teal_200"
+                android:text="hello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:background="@color/teal_200"
+                android:text="hello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:background="@color/teal_200"
+                android:text="hello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+
+
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:background="@color/purple_200"
+            android:text="hello"
+            android:layout_width="300dp"
+            android:layout_height="300dp"/>
+
+        <TextView
+            android:background="#FFEB3B"
+            android:text="hello2"
+            android:layout_width="200dp"
+            android:layout_height="200dp"/>
+
+        <TextView
+            android:background="#8BC34A"
+            android:text="hello3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+<!--        먼저 생성한게 제일 밑에 깔린다. 점점 겹쳐짐-->
+
+
+
+    </FrameLayout>
+
+
+
+</LinearLayout>
