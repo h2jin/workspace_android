@@ -23,9 +23,15 @@ public class MainActivity extends AppCompatActivity {
     private TextView ca;
     private TextView plus;
     private TextView result;
+    private TextView minus;
+    private TextView multiple;
+    private TextView division;
+    private TextView equal;
 
     String oldValue = "0";
     String newValue = "";
+    String endResult;
+    int choice = 0;
 
 
 //    멤버변수에 기본데이터 값이 들어가거나
@@ -54,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
         ca = findViewById(R.id.ca);
         plus = findViewById(R.id.plus);
         result = findViewById(R.id.result);
+        minus = findViewById(R.id.minus);
+        multiple = findViewById(R.id.multiple);
+        division = findViewById(R.id.division);
+        equal = findViewById(R.id.equal);
         // 탬플릿 메서드 패턴 -> 실행의 흐름이 정해져 있고, final이기 때문에 재정의 되지 않는다.
         // r -> resource의 약자
         System.out.println("initData 메서드 호출");
@@ -130,14 +140,33 @@ public class MainActivity extends AppCompatActivity {
         });
 
         plus.setOnClickListener(view -> {
-            // 1. newvalue = 1
-            int number1 = Integer.parseInt(oldValue);
-            int number2 = Integer.parseInt(newValue);
-            int sum = (number1 + number2);
+            int number1 = Integer.parseInt(newValue); //
+            int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수
+            int sum = number1 + number2;
             oldValue = String.valueOf(sum);
-            newValue = "0";
             result.setText(oldValue);
+            newValue = "0";
+            choice = 1;
+        });
 
+        minus.setOnClickListener(view -> {
+
+        });
+
+        multiple.setOnClickListener(view -> {
+
+        });
+
+        division.setOnClickListener(view -> {
+
+        });
+
+        equal.setOnClickListener(view -> {
+            if(choice == 1) {
+
+            }
+            
+            newValue = (String)result.getText(); // 마지막에 newValue 설정 0 or 화면 값
         });
 
 

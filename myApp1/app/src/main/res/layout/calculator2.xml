@@ -56,15 +56,43 @@
             android:text="3"
             android:textSize="30dp" />
 
-        <TextView
-            android:id="@+id/ca"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="1"
-            android:background="#6A78BF"
-            android:gravity="center"
-            android:text="CA"
-            android:textSize="30dp" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/ca"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FCC215"
+                android:gravity="center"
+                android:text="CA"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/plus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FE6D3F"
+                android:gravity="center"
+                android:text="+"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/minus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F53A5A"
+                android:gravity="center"
+                android:text="-"
+                android:textSize="30dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -103,15 +131,47 @@
             android:text="6"
             android:textSize="30dp" />
 
-        <TextView
-            android:id="@+id/plus"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="1"
-            android:background="#657AEA"
-            android:gravity="center"
-            android:text="+"
-            android:textSize="30dp" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/multiple"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#3F51B5"
+                android:gravity="center"
+                android:text="x"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/division"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#5D15DC"
+                android:gravity="center"
+                android:text="÷"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/equal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#657AEA"
+                android:gravity="center"
+                android:text="="
+                android:textSize="30dp" />
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
