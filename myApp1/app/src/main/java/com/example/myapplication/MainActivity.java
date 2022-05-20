@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
     String newValue = "";
     String endResult;
     int choice = 0;
+
+    private boolean isPlus = false;
+    private boolean isMinus = false;
+    private boolean isMutiple = false;
+    private boolean isDivide = false;
 
 
 //    멤버변수에 기본데이터 값이 들어가거나
@@ -74,8 +80,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void addEventListener() {
         zero.setOnClickListener(view -> {
-            newValue = newValue + "0";
-            result.setText(newValue);
+            if (newValue != "0") {
+                newValue = newValue + "0";
+                result.setText(newValue);
+            }
+
         });
 
         one.setOnClickListener(new View.OnClickListener() {
@@ -135,66 +144,146 @@ public class MainActivity extends AppCompatActivity {
 
         ca.setOnClickListener(view -> {
             oldValue = "0";
-            newValue = "0";
+            newValue = "";
             result.setText("0");
         });
 
         plus.setOnClickListener(view -> {
-//            int number1 = Integer.parseInt(newValue); //
-//            int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수
-//            int sum = number1 + number2;
-//            oldValue = String.valueOf(sum);
-//            result.setText(oldValue);
-//            newValue = "0";
-            plusNum();
-            choice = 1;
+            if (isPlus = true) {
+                plusNum();
+                isPlus = false;
+            }
+            if(isMinus = true) {
+                minusNum();
+                isMinus = false;
+            }
+            oldValue = newValue;
+            newValue = "0";
+            isPlus = true;
+//            if(isMutiple = true) {
+//                multipleNum();
+//            }isMutiple = false;
+//            plusNum();
+//            newValue = "";
+//            choice = 1;
         });
 
         minus.setOnClickListener(view -> {
-            minusNum();
-            choice = 2;
+            if(isPlus = true) {
+                plusNum();
+                isPlus = false;
+            }
+            if(isMinus = true) {
+                minusNum();
+            }
+            oldValue = newValue;
+            newValue = "0";
+            isMinus = true;
+//            minusNum();
+//            newValue = "";
+//            choice = 2;
         });
 
         multiple.setOnClickListener(view -> {
-
+//            multipleNum();
+//            newValue = "";
+//            choice = 3;
         });
 
         division.setOnClickListener(view -> {
-
+//            divide();
+//            newValue = "";
+//            choice = 4;
         });
 
         equal.setOnClickListener(view -> {
-            if (choice == 1) {
+            if (isPlus = true) {
                 plusNum();
-                choice = 0;
                 oldValue = "0";
-            } else if (choice == 2) {
-                minusNum();
-                choice = 0;
-                oldValue = "0";
+                isPlus = false;
             }
-
-            newValue = (String) result.getText(); // 마지막에 newValue 설정 0 or 화면 값
+            if (isMinus = true) {
+                minusNum();;
+                oldValue = "0";
+                isMinus = false;
+            }
+//            if (choice == 1) {
+//                plusNum();
+//                result.setText(oldValue);
+//                choice = 0;
+//                newValue = "";
+//            } else if (choice == 2) {
+//                minusNum();
+//                result.setText(oldValue);
+//                choice = 0;
+//                newValue = "";
+//            } else if (choice ==3) {
+//                multipleNum();
+//                result.setText(oldValue);
+//                choice = 0;
+//                newValue = "";
+//            } else if(choice == 4) {
+//                divide();
+//                result.setText(oldValue);
+//                choice = 0;
+//                newValue = "";
+//            } else {
+//                result.setText(newValue);
+//            }
+            // 마지막에 newValue 설정 0 or 화면 값
         });
 
     }
 
     private void plusNum() {
-        int number1 = Integer.parseInt(newValue); //
-        int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수
-        oldValue = String.valueOf(number1 + number2);
-        endResult = oldValue;
-        result.setText(endResult);
-        newValue = "0";
+//        if(!(newValue.equals(""))) {
+//            newValue = (String)result.getText();
+//        }
+        int number1 = Integer.parseInt(newValue); // 2
+        int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수 1
+        newValue = String.valueOf(number1 + number2); // 3
+        result.setText(newValue);
+
+        Log.d("TAG", number1+ "," + number2);
+        Log.d("TAG", newValue);
+//        endResult = String.format("%,6", endResult);
     }
 
     private void minusNum() {
-        int number1 = Integer.parseInt(newValue);
-        int number2 = Integer.parseInt(oldValue);
-        oldValue = String.valueOf(number2 - number1);
-        endResult = oldValue;
-        result.setText(endResult);
-        newValue = "0";
+        int number1 = Integer.parseInt(newValue); // 2
+        int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수 1
+        newValue = String.valueOf(number1 - number2); // 3
+        result.setText(newValue);
+//        endResult = String.format("%,6", endResult);
+
     }
 
+    private void multipleNum() {
+        int number1 = Integer.parseInt(newValue); // 2
+        int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수 1
+        if (number1 == 0) {
+            oldValue = String.valueOf(number2);
+        } else if (number2 == 0) {
+            oldValue = String.valueOf(number1);
+        } else {
+            oldValue = String.valueOf(number1 * number2); // 3
+        }
+
+//        endResult = String.format("%,6", endResult);
+
+    }
+
+    private void divide() {
+        int number1 = Integer.parseInt(newValue); // 2
+        int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수 1
+        if (number1 == 0) {
+            oldValue = String.valueOf(number2);
+        } else if (number2 == 0) {
+            oldValue = String.valueOf(number1);
+        } else {
+            oldValue = String.valueOf(number1 / number2); // 3
+        }
+//        endResult = String.format("%,6", endResult);
+
+    }
 }
