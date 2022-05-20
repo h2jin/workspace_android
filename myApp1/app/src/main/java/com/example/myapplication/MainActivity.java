@@ -140,17 +140,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
         plus.setOnClickListener(view -> {
-            int number1 = Integer.parseInt(newValue); //
-            int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수
-            int sum = number1 + number2;
-            oldValue = String.valueOf(sum);
-            result.setText(oldValue);
-            newValue = "0";
+//            int number1 = Integer.parseInt(newValue); //
+//            int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수
+//            int sum = number1 + number2;
+//            oldValue = String.valueOf(sum);
+//            result.setText(oldValue);
+//            newValue = "0";
+            plusNum();
             choice = 1;
         });
 
         minus.setOnClickListener(view -> {
-
+            minusNum();
+            choice = 2;
         });
 
         multiple.setOnClickListener(view -> {
@@ -162,14 +164,37 @@ public class MainActivity extends AppCompatActivity {
         });
 
         equal.setOnClickListener(view -> {
-            if(choice == 1) {
-
+            if (choice == 1) {
+                plusNum();
+                choice = 0;
+                oldValue = "0";
+            } else if (choice == 2) {
+                minusNum();
+                choice = 0;
+                oldValue = "0";
             }
-            
-            newValue = (String)result.getText(); // 마지막에 newValue 설정 0 or 화면 값
+
+            newValue = (String) result.getText(); // 마지막에 newValue 설정 0 or 화면 값
         });
 
-
-
     }
+
+    private void plusNum() {
+        int number1 = Integer.parseInt(newValue); //
+        int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수
+        oldValue = String.valueOf(number1 + number2);
+        endResult = oldValue;
+        result.setText(endResult);
+        newValue = "0";
+    }
+
+    private void minusNum() {
+        int number1 = Integer.parseInt(newValue);
+        int number2 = Integer.parseInt(oldValue);
+        oldValue = String.valueOf(number2 - number1);
+        endResult = oldValue;
+        result.setText(endResult);
+        newValue = "0";
+    }
+
 }
