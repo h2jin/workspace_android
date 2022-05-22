@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     String oldValue = "0";
     String newValue = "";
+    String resultValue;
     String endResult;
     int choice = 0;
 
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 newValue = newValue + "0";
                 result.setText(newValue);
             }
+            result.setText(newValue);
 
         });
 
@@ -149,17 +151,32 @@ public class MainActivity extends AppCompatActivity {
         });
 
         plus.setOnClickListener(view -> {
-            if (isPlus = true) {
-                plusNum();
-                isPlus = false;
-            }
-            if(isMinus = true) {
-                minusNum();
-                isMinus = false;
+            switch (choice)
+            {
+                case 1 :
+                    plusNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 2 :
+                    minusNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 3 :
+                    multipleNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 4 :
+                    divide();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
             }
             oldValue = newValue;
             newValue = "0";
-            isPlus = true;
+            choice = 1;
 //            if(isMutiple = true) {
 //                multipleNum();
 //            }isMutiple = false;
@@ -169,16 +186,33 @@ public class MainActivity extends AppCompatActivity {
         });
 
         minus.setOnClickListener(view -> {
-            if(isPlus = true) {
-                plusNum();
-                isPlus = false;
+            switch (choice)
+            {
+                case 1 :
+                    plusNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 2 :
+                    minusNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 3 :
+                    multipleNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 4 :
+                    divide();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
             }
-            if(isMinus = true) {
-                minusNum();
-            }
+
             oldValue = newValue;
             newValue = "0";
-            isMinus = true;
+            choice = 2;
 //            minusNum();
 //            newValue = "";
 //            choice = 2;
@@ -188,48 +222,95 @@ public class MainActivity extends AppCompatActivity {
 //            multipleNum();
 //            newValue = "";
 //            choice = 3;
+            switch (choice)
+            {
+                case 1 :
+                    plusNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 2 :
+                    minusNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 3 :
+                    multipleNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 4 :
+                    divide();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+            }
+
+            oldValue = newValue;
+            newValue = "0";
+            choice = 3;
         });
 
         division.setOnClickListener(view -> {
 //            divide();
 //            newValue = "";
 //            choice = 4;
+            switch (choice)
+            {
+                case 1 :
+                    plusNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 2 :
+                    minusNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 3 :
+                    multipleNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 4 :
+                    divide();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+            }
+
+            oldValue = newValue;
+            newValue = "0";
+            choice = 4;
         });
 
         equal.setOnClickListener(view -> {
-            if (isPlus = true) {
-                plusNum();
-                oldValue = "0";
-                isPlus = false;
+
+            switch (choice)
+            {
+                case 1 :
+                    plusNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 2 :
+                    minusNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 3 :
+                    multipleNum();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 4 :
+                    divide();
+                    oldValue = "0";
+                    choice = 0;
+                    break;
+                case 0 :
+                    result.setText(resultValue);
             }
-            if (isMinus = true) {
-                minusNum();;
-                oldValue = "0";
-                isMinus = false;
-            }
-//            if (choice == 1) {
-//                plusNum();
-//                result.setText(oldValue);
-//                choice = 0;
-//                newValue = "";
-//            } else if (choice == 2) {
-//                minusNum();
-//                result.setText(oldValue);
-//                choice = 0;
-//                newValue = "";
-//            } else if (choice ==3) {
-//                multipleNum();
-//                result.setText(oldValue);
-//                choice = 0;
-//                newValue = "";
-//            } else if(choice == 4) {
-//                divide();
-//                result.setText(oldValue);
-//                choice = 0;
-//                newValue = "";
-//            } else {
-//                result.setText(newValue);
-//            }
             // 마지막에 newValue 설정 0 or 화면 값
         });
 
@@ -241,8 +322,10 @@ public class MainActivity extends AppCompatActivity {
 //        }
         int number1 = Integer.parseInt(newValue); // 2
         int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수 1
-        newValue = String.valueOf(number1 + number2); // 3
-        result.setText(newValue);
+        int sum = number1 + number2;
+        newValue = String.valueOf(sum); // 3
+        resultValue = newValue;
+        result.setText(resultValue);
 
         Log.d("TAG", number1+ "," + number2);
         Log.d("TAG", newValue);
@@ -252,8 +335,10 @@ public class MainActivity extends AppCompatActivity {
     private void minusNum() {
         int number1 = Integer.parseInt(newValue); // 2
         int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수 1
-        newValue = String.valueOf(number1 - number2); // 3
-        result.setText(newValue);
+        int sum = number2 - number1;
+        newValue = String.valueOf(sum); // 3
+        resultValue = newValue;
+        result.setText(resultValue);
 //        endResult = String.format("%,6", endResult);
 
     }
@@ -261,13 +346,16 @@ public class MainActivity extends AppCompatActivity {
     private void multipleNum() {
         int number1 = Integer.parseInt(newValue); // 2
         int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수 1
-        if (number1 == 0) {
-            oldValue = String.valueOf(number2);
-        } else if (number2 == 0) {
-            oldValue = String.valueOf(number1);
-        } else {
-            oldValue = String.valueOf(number1 * number2); // 3
-        }
+//        if (number1 == 0) {
+//            oldValue = String.valueOf(number2);
+//        } else if (number2 == 0) {
+//            oldValue = String.valueOf(number1);
+//        } else {
+        int sum = number2 * number1;
+        newValue = String.valueOf(sum); // 3
+        resultValue = newValue;
+        result.setText(resultValue);
+//        }
 
 //        endResult = String.format("%,6", endResult);
 
@@ -276,13 +364,17 @@ public class MainActivity extends AppCompatActivity {
     private void divide() {
         int number1 = Integer.parseInt(newValue); // 2
         int number2 = Integer.parseInt(oldValue); // 원래 화면에 있던 수 1
-        if (number1 == 0) {
-            oldValue = String.valueOf(number2);
-        } else if (number2 == 0) {
-            oldValue = String.valueOf(number1);
-        } else {
-            oldValue = String.valueOf(number1 / number2); // 3
-        }
+//        if (number1 == 0) {
+//            oldValue = String.valueOf(number2);
+//        } else if (number2 == 0) {
+//            oldValue = String.valueOf(number1);
+//        } else {
+//            oldValue = String.valueOf(number1 / number2); // 3
+//        }
+        int sum = number2 / number1;
+        newValue = String.valueOf(sum); // 3
+        resultValue = newValue;
+        result.setText(resultValue);
 //        endResult = String.format("%,6", endResult);
 
     }
