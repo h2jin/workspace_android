@@ -11,13 +11,13 @@
         android:gravity="right|center">
 
         <TextView
-            android:paddingRight="5dp"
-            android:layout_margin="6dp"
-            android:gravity="right|bottom"
-            android:background="#686868"
             android:id="@+id/result"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:layout_margin="6dp"
+            android:background="#686868"
+            android:gravity="right|bottom"
+            android:paddingRight="5dp"
             android:text="0"
             android:textColor="@color/white"
             android:textSize="60dp" />
@@ -25,14 +25,13 @@
     </LinearLayout>
 
     <LinearLayout
-        android:background="@color/black"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@color/black">
 
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/seven"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -40,10 +39,10 @@
             android:background="@drawable/radius_01"
             android:gravity="center"
             android:text="7"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/eight"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -51,10 +50,10 @@
             android:background="@drawable/radius_01"
             android:gravity="center"
             android:text="8"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/nine"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -62,10 +61,10 @@
             android:background="@drawable/radius_01"
             android:gravity="center"
             android:text="9"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/division"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -73,18 +72,18 @@
             android:background="@drawable/radius_02"
             android:gravity="center"
             android:text="÷"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:background="@color/black"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@color/black">
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/four"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -92,10 +91,10 @@
             android:background="@drawable/radius_01"
             android:gravity="center"
             android:text="4"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/five"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -103,10 +102,10 @@
             android:background="@drawable/radius_01"
             android:gravity="center"
             android:text="5"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/six"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -114,32 +113,31 @@
             android:background="@drawable/radius_01"
             android:gravity="center"
             android:text="6"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
 
         <TextView
-            android:textColor="@color/white"
-            android:layout_weight="1"
             android:id="@+id/multiple"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="@drawable/radius_02"
             android:gravity="center"
             android:text="x"
+            android:textColor="@color/white"
             android:textSize="30dp" />
-
 
 
     </LinearLayout>
 
     <LinearLayout
-        android:background="@color/black"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@color/black">
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/one"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -147,10 +145,10 @@
             android:background="@drawable/radius_01"
             android:gravity="center"
             android:text="1"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/two"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -158,10 +156,10 @@
             android:background="@drawable/radius_01"
             android:gravity="center"
             android:text="2"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/three"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -169,10 +167,10 @@
             android:background="@drawable/radius_01"
             android:gravity="center"
             android:text="3"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/minus"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -180,18 +178,18 @@
             android:background="@drawable/radius_02"
             android:gravity="center"
             android:text="-"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:background="@color/black"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@color/black">
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/zero"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -199,10 +197,10 @@
             android:background="@drawable/radius_01"
             android:gravity="center"
             android:text="0"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/ca"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -210,21 +208,21 @@
             android:background="@drawable/radius_02"
             android:gravity="center"
             android:text="CA"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:textColor="@color/white"
-            android:layout_weight="1"
             android:id="@+id/equal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="@drawable/radius_02"
             android:gravity="center"
             android:text="="
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/plus"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -232,6 +230,7 @@
             android:background="@drawable/radius_02"
             android:gravity="center"
             android:text="+"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
     </LinearLayout>
