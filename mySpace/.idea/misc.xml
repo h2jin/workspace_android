@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/workspace_android/mySpace/app/src/main/res/drawable/gradient_01.xml" value="0.1525" />
+        <entry key="..\:/workspace_android/mySpace/app/src/main/res/drawable/radius_01.xml" value="0.185" />
+        <entry key="..\:/workspace_android/mySpace/app/src/main/res/drawable/solid_01.xml" value="0.185" />
+        <entry key="..\:/workspace_android/mySpace/app/src/main/res/drawable/solid_02.xml" value="0.185" />
         <entry key="..\:/workspace_android/mySpace/app/src/main/res/layout/drawable_example_01.xml" value="0.23076923076923078" />
         <entry key="..\:/workspace_android/workspace_android/mySpace/app/src/main/res/layout/activity_main.xml" value="0.15579710144927536" />
       </map>

@@ -31,10 +31,14 @@ public class BmiResultActivity extends AppCompatActivity {
                 resultText = "저체중입니다.";
             } else if (bmiValue < 23) {
                 resultText = "정상체중입니다.";
-            } else if (bmiValue < 40) {
-                resultText = "비만입니다.";
+            } else if (bmiValue < 25) {
+                resultText = "과체중입니다.";
+            } else if (bmiValue < 30.0) {
+                resultText = "경도 비만입니다.(1단계 비만)";
+            } else if (bmiValue < 35) {
+                resultText = "고도비만입니다.(2단계 비만)";
             } else {
-                resultText = "경도 비만입니다.";
+                resultText = "초고도비만입니다.(3단계 비만)";
             }
 
             resultTextView.setText(resultText);
