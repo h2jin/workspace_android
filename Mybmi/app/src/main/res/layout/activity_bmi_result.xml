@@ -6,4 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".BmiResultActivity">
 
+    <TextView
+        android:textStyle="bold"
+        app:layout_constraintVertical_bias="0.3"
+        android:textSize="25dp"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#60C6F4"
+        android:gravity="center"
+        android:text="나의 BMI 결과"
+        app:layout_constraintBottom_toTopOf="@id/bmiResultView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bmiResultView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:textColor="#121F6A"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
