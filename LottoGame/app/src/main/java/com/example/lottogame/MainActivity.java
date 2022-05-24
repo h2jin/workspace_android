@@ -141,9 +141,15 @@ public class MainActivity extends AppCompatActivity {
     private Drawable setTextViewBackground(int number) {
         Drawable drawable = null;
         if (number >= 40) {
-            drawable = ContextCompat.getDrawable(this, R.drawable.round_background1);
-        } else if(number >= 30){
+            drawable = ContextCompat.getDrawable(this, R.drawable.round_background5);
+        } else if (number >= 30) {
+            drawable = ContextCompat.getDrawable(this, R.drawable.round_background4);
+        } else if (number >= 20) {
+            drawable = ContextCompat.getDrawable(this, R.drawable.round_background3);
+        } else if (number >= 10) {
             drawable = ContextCompat.getDrawable(this, R.drawable.round_background2);
+        } else {
+            drawable = ContextCompat.getDrawable(this, R.drawable.round_background1);
         }
         return drawable;
     }
