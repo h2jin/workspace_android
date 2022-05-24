@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:elevation="3dp"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    >
 
 <!--    디자이너가 준 가이드라인 딱히 없으면 이런 방식으로 디자인 하는 것이 더 편하다.-->
 

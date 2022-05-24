@@ -9,6 +9,7 @@ import android.widget.TextView;
 public class BmiResultActivity extends AppCompatActivity {
 
     TextView resultTextView;
+    TextView bmiTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +17,7 @@ public class BmiResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bmi_result);
 
         resultTextView = findViewById(R.id.bmiResultView);
+        bmiTextView = findViewById(R.id.bmiTextView);
 
         if (getIntent() != null) {
 
@@ -25,7 +27,9 @@ public class BmiResultActivity extends AppCompatActivity {
 //            BMI 공식 체중 /신장(m) *신장
 //            나누기를 계산할 떄는 소수점을 써주기!
             double bmiValue = weight / Math.pow(height / 100.0, 2);
-            Log.d("TAG", bmiValue + "");
+            String bmi = String.valueOf(bmiValue);
+            bmiTextView.setText("bmi 지수 : " + bmi);
+
             String resultText = "";
             if (bmiValue < 18.5) {
                 resultText = "저체중입니다.";
