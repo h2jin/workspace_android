@@ -1,2 +1,5 @@
-package com.example.bottomnavi.utils;public enum FragmentType {
+package com.example.bottomnavi.utils;
+
+public enum FragmentType {
+    HOEM, CHAT, GPS
 }

@@ -59,6 +59,6 @@ public class FragmentGPS extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_g_p_s, container, false);
+        return inflater.inflate(R.layout.fragment_gps, container, false);
     }
 }
