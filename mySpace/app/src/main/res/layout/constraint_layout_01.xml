@@ -97,6 +97,8 @@
         android:text="text1"
         android:textColor="@color/white"/>
 
+<!--   chaning과 bias 개념-->
+
     <TextView
         app:layout_constraintStart_toEndOf="@id/text2"
         app:layout_constraintTop_toTopOf="@id/text1"
