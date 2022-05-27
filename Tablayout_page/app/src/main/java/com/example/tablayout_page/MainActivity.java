@@ -1,16 +1,9 @@
 package com.example.tablayout_page;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -30,22 +23,34 @@ public class MainActivity extends AppCompatActivity {
     - pager와 TabLayout 을 연결해주기 위해 필요하다.
 
      */
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private MyPagerAdapter myPagerAdapter;
 
     private static final String TAG = MainActivity.class.getName();
     static final int TAB_COUNT = 3;
+    private String tabName[] = {"ONE", "TWO", "THREE"};
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
+    private void initData() {
+        viewPager = findViewById(R.id.viewPager);
+        tabLayout = findViewById(R.id.tabLayout);
 
         // addTab(Tab을 넣어야 하는데, tabLayout안의 newTab으로 탭 생성 후, 텍스트 설정)
-        tabLayout.addTab(tabLayout.newTab().setText("ONE"));
-        tabLayout.addTab(tabLayout.newTab().setText("TWO"));
-        tabLayout.addTab(tabLayout.newTab().setText("THREE"));
 
+//        tabLayout.addTab(tabLayout.newTab().setText("ONE"));
+//        tabLayout.addTab(tabLayout.newTab().setText("TWO"));
+//        tabLayout.addTab(tabLayout.newTab().setText("THREE"));
+//        for문 처리
+        for (String name: tabName) {
+            tabLayout.addTab(tabLayout.newTab().setText(name));
+        }
+
+        // 어뎁터 생성
+        myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), TAB_COUNT);
+
+    }
+
+    private void addEventListener() {
         // 1번 탭에서 2번 탭으로 진행 했을 때 1번 탭이 사라질 때 뭔가 해야할 일이 있다면,
         // onUnselected에서 코드 작성, 새로운 탭이 선택되었을 때 onTabSelected에서 코드 작성
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -53,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition(); //몇번째 탭이 눌러졌는지 알 수 있음.
-
+                // 뷰 페이저와 탭 연동
+                viewPager.setCurrentItem(position);
             }
-
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
@@ -71,41 +76,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ViewPager viewPager = findViewById(R.id.viewPager);
-        // 어뎁터 생성
-        MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), TAB_COUNT);
         // 어텝터 셋팅
         viewPager.setAdapter(myPagerAdapter);
-
-    }
-}
-
-class MyPagerAdapter extends FragmentPagerAdapter {
-
-    public MyPagerAdapter(@NonNull FragmentManager fm, int behavior) {
-        super(fm, behavior);
-    }
-
-    @NonNull
-    @Override
-    public Fragment getItem(int position) {
-        Fragment fragment = null;
-        switch (position) {
-            case 0:
-                fragment = new FragmentOne();
-                break;
-            case 1:
-                fragment = new FragmentTwo();
-                break;
-            case 2:
-                fragment = new FragmentThree();
-                break;
-        }
-        return fragment;
+        // 뷰 페이저와 Tab 연동시키기
+        // new TabLayout.TabLayoutOnPageChangeListener -> 탭의 리스너를 인식해주는 것
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 
     @Override
-    public int getCount() {
-        return MainActivity.TAB_COUNT;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initData();
+        addEventListener();
     }
 }
+

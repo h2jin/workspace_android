@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 //        recyclerView 를 사용하면 화면에 올라오는 순간 랜더링함.
 //        addView 방식은 모든 데이터가 올라올 때까지 기다려야 함.
+        
+        recyclerView.hasFixedSize(); // 성능개선을 위한 코드.
 
 
     }

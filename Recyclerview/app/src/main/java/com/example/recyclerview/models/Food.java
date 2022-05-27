@@ -53,6 +53,16 @@ public class Food implements Serializable {
         this.detail = detail;
     }
 
+    @Override
+    public String toString() {
+        return "Food{" +
+                "thumbnail='" + thumbnail + '\'' +
+                ", title='" + title + '\'' +
+                ", subTitle='" + subTitle + '\'' +
+                ", detail='" + detail + '\'' +
+                '}';
+    }
+
     public static ArrayList<com.example.recyclerview.models.Food> getSampleData() {
         ArrayList<com.example.recyclerview.models.Food> foods = new ArrayList<>();
 
