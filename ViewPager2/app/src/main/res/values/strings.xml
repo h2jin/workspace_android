@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ViewPager2</string>
+    <string name="str_slider_image">slider image</string>
+</resources>
