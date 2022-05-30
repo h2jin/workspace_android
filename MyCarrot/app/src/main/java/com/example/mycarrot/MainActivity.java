@@ -22,14 +22,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SettingAdapter settingAdapter = new SettingAdapter(SettingList.getSettingData(), this);
+//        SettingAdapter settingAdapter = new SettingAdapter(SettingList.getSettingData(), this);
 
-        ArrayList<SettingList> lists = SettingList.getSettingData();
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setAdapter(settingAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
+//        ArrayList<SettingList> lists = SettingList.getSettingData();
+//
+//        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+//        recyclerView.setAdapter(settingAdapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setHasFixedSize(true);
 
         initData();
     }
