@@ -15,12 +15,12 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private NumberPicker numberPicker1;
-    private NumberPicker numberPicker2;
-    private NumberPicker numberPicker3;
+    private NumberPicker numberPk1;
+    private NumberPicker numberPk2;
+    private NumberPicker numberPk3;
 
-    private Button openButton;
-    private Button changePasswordBtn;
+    private Button openBtn;
+    private Button modifyBtn;
     SharedPreferences passwordPreference;
 
     // 프로그램 흐름상, 두가지 모드가 있음
@@ -32,23 +32,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.temp_layout);
         initData();
         addEventListener();
     }
 
     private void initData() {
-        numberPicker1 = findViewById(R.id.numberPicker1);
-        numberPicker2 = findViewById(R.id.numberPicker2);
-        numberPicker3 = findViewById(R.id.numberPicker3);
-        numberPicker1.setMaxValue(9);
-        numberPicker1.setMinValue(0);
-        numberPicker2.setMaxValue(9);
-        numberPicker2.setMinValue(0);
-        numberPicker3.setMaxValue(9);
-        numberPicker3.setMinValue(0);
-        openButton = findViewById(R.id.openButton);
-        changePasswordBtn = findViewById(R.id.changePasswordButton);
+        numberPk1 = findViewById(R.id.numberPk1);
+        numberPk2 = findViewById(R.id.numberPk2);
+        numberPk3 = findViewById(R.id.numberPk3);
+        numberPk1.setMaxValue(9);
+        numberPk1.setMinValue(0);
+        numberPk2.setMaxValue(9);
+        numberPk2.setMinValue(0);
+        numberPk3.setMaxValue(9);
+        numberPk3.setMinValue(0);
+        openBtn = findViewById(R.id.openBtn);
+        modifyBtn = findViewById(R.id.modifyBtn);
 
         passwordPreference = getSharedPreferences(KEY_PWD, Context.MODE_PRIVATE);
 
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addEventListener() {
         // 비밀 다이어리 오픈버튼 눌렀을 때 동작 처리
-        openButton.setOnClickListener(view -> {
+        openBtn.setOnClickListener(view -> {
             if (changePasswordMode) {
                 // 작은 버튼 눌러서 색상 변경되었을 때 진행시키면 안됨.
                 Toast.makeText(this, "비밀번호 변경 중입니다.", Toast.LENGTH_SHORT).show();
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // 비밀번호 변경버튼 눌렀을 때 동작 처리
-        changePasswordBtn.setOnClickListener(view -> {
+        modifyBtn.setOnClickListener(view -> {
 //            passwordPreference = getSharedPreferences("password", Context.MODE_PRIVATE);
             String passwordFromUser = getUserNumber();
             // 비밀번호를 변경 중인 경우, 처음 변경하겠다고 누르는 경우
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 editor.putString(KEY_PWD, getUserNumber());
                 editor.apply();
                 changePasswordMode = false;
-                changePasswordBtn.setBackgroundColor(Color.BLACK);
+                modifyBtn.setBackgroundColor(Color.WHITE);
                 // 비밀번호 변경하는 경우 --> 저장처리
             } else {
                 // 비밀번호 변경 모드 활성화 시키기
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 if (passwordPreference.getString(KEY_PWD, "000").equals(passwordFromUser)) {
                     changePasswordMode = true;
                     Toast.makeText(this, "변경할 패스워드를 알려주세요", Toast.LENGTH_SHORT).show();
-                    changePasswordBtn.setBackgroundColor(Color.RED);
+                    modifyBtn.setBackgroundColor(Color.RED);
                 } else {
                     showErrorAlertDialog();
                 }
@@ -124,9 +124,9 @@ public class MainActivity extends AppCompatActivity {
 
     private String getUserNumber() {
         String passwordFromUser = ""
-                + numberPicker1.getValue()
-                + numberPicker2.getValue()
-                + numberPicker3.getValue();
+                + numberPk1.getValue()
+                + numberPk2.getValue()
+                + numberPk3.getValue();
         return passwordFromUser;
     }
 
