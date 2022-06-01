@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5FCA9">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:fontFamily="@font/baemin"
+        android:text="My Secret Diary"
+        android:textColor="@color/black"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toTopOf="@id/pwLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pwLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#6A81FF"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/openBtn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:background="#011065"
+            app:layout_constraintBottom_toTopOf="@id/modifyBtn"
+            app:layout_constraintEnd_toStartOf="@id/numberPk1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/modifyBtn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/openBtn"
+            app:layout_constraintTop_toBottomOf="@id/openBtn" />
+
+        <NumberPicker
+            android:id="@+id/numberPk1"
+            android:layout_width="30dp"
+            android:layout_height="120dp"
+            android:background="@color/number_picker_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/numberPk2"
+            app:layout_constraintStart_toEndOf="@id/openBtn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <NumberPicker
+            android:id="@+id/numberPk2"
+            android:layout_width="30dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/number_picker_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/numberPk3"
+            app:layout_constraintStart_toEndOf="@id/numberPk1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <NumberPicker
+            android:id="@+id/numberPk3"
+            android:layout_width="30dp"
+            android:layout_height="120dp"
+            android:background="@color/number_picker_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/numberPk2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
