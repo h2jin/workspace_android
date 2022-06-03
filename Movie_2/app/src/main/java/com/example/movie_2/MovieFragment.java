@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.movie_2.databinding.FragmentMovieBinding;
+import com.example.movie_2.repository.MovieService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +20,9 @@ public class MovieFragment extends Fragment {
 
     // 바인딩 연결
     private FragmentMovieBinding binding;
+
+    private MovieService movieService;
+
 
 
     public MovieFragment() {
