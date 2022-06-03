@@ -10,14 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.movie_1.adapter.MovieAdapter;
 import com.example.movie_1.databinding.FragmentMovieBinding;
+import com.example.movie_1.interfaces.OnChangeToolbarType;
 import com.example.movie_1.interfaces.OnMovieItemClicked;
 import com.example.movie_1.models.Movie;
 import com.example.movie_1.models.YtsData;
 import com.example.movie_1.repository.MovieService;
+import com.example.movie_1.utils.Define;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,21 +44,25 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
     // 스크롤 시 중복이벤트 발생 해결 방안
     private boolean preventDuplicateScrollEvent = true;
 
-    OnMovieItemClicked clicked;
+    private OnChangeToolbarType onChangeToolbarType;
+
+    private static MovieFragment movieFragment;
+    private boolean isFirstLoading = true;
 
 
-    public MovieFragment() {
+    private MovieFragment(OnChangeToolbarType onChangeToolbarType) {
+        this.onChangeToolbarType = onChangeToolbarType;
         // Required empty public constructor
     }
 
-    public void setMovieItemClicked(OnMovieItemClicked movieItemClicked) {
-        this.clicked = clicked;
-    }
 
-    public static MovieFragment newInstance() {
-        MovieFragment fragment = new MovieFragment();
+    public static MovieFragment getInstance(OnChangeToolbarType onChangeToolbarType) {
+        if (movieFragment == null) {
+            movieFragment = new MovieFragment(onChangeToolbarType);
+        }
+        // 위에는 메서드일 뿐임 -> static 통해서 new MovieFragment 하는 중
 
-        return fragment;
+        return movieFragment;
     }
 
     @Override
@@ -78,8 +83,14 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
         // 통신 받기 전이기 때문에 아직 없음 / 안드로이드 입체적으로 생각해야 함.
         //
         setupRecyclerView(list); // 처음에는 아무 것도 없는 list 넘겨 줌
-        requestMoviesData(currentPageNumber);
-
+        if (isFirstLoading) {
+            requestMoviesData(currentPageNumber);
+        } else {
+            setVisibilityProgressBar(View.GONE);
+        }
+        onChangeToolbarType.onSetupType(Define.PAGE_TITLE_MOVIE);
+        // NullPointException 뜸 --> 주소를 연결해야 함. (누가 내 메서드를 콜백 받을지)
+        // 연결방법 2가지 (생성자를 통해서 연결, 메서드를 통해서 연결)
         return binding.getRoot();
     }
 
@@ -102,6 +113,7 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
                             currentPageNumber++;
                             preventDuplicateScrollEvent = true;
                             setVisibilityProgressBar(View.GONE);
+                            isFirstLoading = false;
 
                         }
                     }
@@ -121,7 +133,8 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
         movieAdapter = new MovieAdapter(); // addItemList 메서드를 다른 곳에서 쓰기 위해 멤버변수로 선언
         movieAdapter.setMovieItemClicked(this);
         // 생성자를 통해 넘겨받을 수도 있음. 이런 것은 버튼눌렀을 때 등등 활용 가능
-        movieAdapter.addItemList(movieList);
+        movieAdapter.initItemList(movieList);
+//        movieAdapter.addItem(movieList);
         // 2. 매니저
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         // 3. xml 파일에 선언한 recyclerView 에 셋팅

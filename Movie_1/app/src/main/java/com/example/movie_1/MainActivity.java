@@ -6,15 +6,18 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 
 import com.example.movie_1.databinding.ActivityMainBinding;
+import com.example.movie_1.interfaces.OnChangeToolbarType;
+import com.example.movie_1.utils.Define;
 import com.example.movie_1.utils.FragmentType;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnChangeToolbarType {
     // 뷰 바인딩 생성 방법
     // 1. 안드로이드가 만들어준 객체 선언
     ActivityMainBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         replaceFragment(FragmentType.MOVIE);
         addBottomNavigationListener();
-
-
     }
 
     private void replaceFragment(FragmentType type) {
@@ -34,11 +35,14 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         if (type == FragmentType.MOVIE) {
-            fragment = MovieFragment.newInstance(); // MOVIE TAG
+            fragment = MovieFragment.getInstance(this); // MOVIE TAG
 
 
         } else {
-            fragment = InfoFragment.newInstance(); // INFO TAG
+            fragment = InfoFragment.getInstance(this); // INFO TAG
+//            InfoFragment infoFragment = InfoFragment.newInstance();
+//            infoFragment.setOnChangeToolbarType(this);
+//            InfoFragment.newInstance().setOnChangeToolbarType(this);
         }
         // 문자열로 이름 지어서 구분해 놓는 녀석 -> TAG
         transaction.replace(binding.mainContainer.getId(), fragment, type.toString());
@@ -71,10 +75,23 @@ public class MainActivity extends AppCompatActivity {
         // 아래의 기능 완성할 수 있음.
         String fragmentTag = getSupportFragmentManager().findFragmentByTag(FragmentType.INFO.toString()).getTag();
         if (fragmentTag.equals(FragmentType.INFO.toString())) {
-            replaceFragment(FragmentType.MOVIE);
+            // replace 대신에 버튼클릭을 활성화 시켜서 구현할 수 있음.
+            View view = binding.bottomNavigation.findViewById(R.id.page1);
+            view.callOnClick();
         } else {
             super.onBackPressed();
         }
 
+    }
+
+    @Override
+    public void onSetupType(String title) {
+        // 플래그먼트에서 호출하면 (onSetupType) 여기로 돌아온다.
+        if(title.equals(Define.PAGE_TITLE_MOVIE)) {
+            binding.topAppbar.setTitle(title);
+            binding.topAppbar.setVisibility(View.VISIBLE);
+        } else if(title.equals(Define.PAGE_TITLE_INFO)) {
+            binding.topAppbar.setVisibility(View.GONE);
+        }
     }
 }

@@ -5,10 +5,16 @@
     android:layout_height="match_parent"
     tools:context=".InfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <WebView
+        android:id="@+id/mWebView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Info Fragment" />
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:layout_width="200dp"
+        android:id="@+id/progressIndicator"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:layout_height="wrap_content"/>
 
 </FrameLayout>

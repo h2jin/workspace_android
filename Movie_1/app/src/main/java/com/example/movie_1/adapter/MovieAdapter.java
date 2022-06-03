@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.movie_1.R;
+import com.example.movie_1.interfaces.OnBottomButtonClicked;
 import com.example.movie_1.interfaces.OnMovieItemClicked;
 import com.example.movie_1.models.Movie;
 
@@ -28,6 +29,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     private List<Movie> list = new ArrayList<>();
     private OnMovieItemClicked movieItemClicked;
 
+
     // 콜백메서드 메서드를 이용하여 연결하는 방식
     public void setMovieItemClicked(OnMovieItemClicked movieItemClicked) {
         this.movieItemClicked = movieItemClicked;
@@ -36,7 +38,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     // 통신 배우기 전에는 생성자에서 데이터를 전달받아서 화면을 구성
     // 통신이기 때문에 화면을 그리는 시점보다 더 늦게 데이터가 도달할 수 있음.
     // 메서드로 만들어서 연결해주면 됨
-    public void addItemList(List<Movie> list) {
+    public void initItemList(List<Movie> list) {
         this.list = list; // 덮어쓰지 않고 변경해줬음..
         notifyDataSetChanged(); // 데이터가 변경되었으면 바뀌었다고 알려줌. 그럼 안드로이드가 다시 그려줌
     }
